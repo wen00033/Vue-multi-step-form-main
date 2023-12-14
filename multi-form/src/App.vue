@@ -1,30 +1,42 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="wrapper">
+    <step />
+    <main class="content">
+      <router-view />
+    </main>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <footer>
+    <submit />
+  </footer>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script>
+import step from "./components/step.vue";
+import submit from "./components/Submit.vue";
+export default {
+  components: {
+    step,
+    submit,
+  },
+};
+</script>
+<style lang="scss">
+.content {
+  background-color: white;
+  width: 90%;
+  padding: 1.5rem;
+  border-radius: 0.4rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: white;
+  padding: 0.5rem;
 }
 </style>
