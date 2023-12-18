@@ -6,13 +6,31 @@
       alt="mobile"
     />
     <ul class="progress-container">
-      <li><h4>1</h4></li>
-      <li><h4>2</h4></li>
-      <li><h4>3</h4></li>
-      <li><h4>4</h4></li>
+      <li class="step"><h4>1</h4></li>
+      <li class="step"><h4>2</h4></li>
+      <li class="step"><h4>3</h4></li>
+      <li class="step"><h4>4</h4></li>
     </ul>
   </header>
 </template>
+<script setup>
+import { defineProps, onMounted } from "vue";
+
+const props = defineProps({
+  update: {
+    type: Number,
+    required: true,
+  },
+});
+
+onMounted(() => {
+  const step = document.querySelectorAll(".step");
+  console.log(step);
+  step[props.update].classList.add("active");
+});
+
+console.log(props.update);
+</script>
 
 <style lang="scss">
 img {
@@ -44,6 +62,7 @@ header {
   gap: 1rem;
 }
 .progress-container li {
+  cursor: pointer;
   position: relative;
   width: 1rem;
   height: 1rem;
@@ -52,8 +71,8 @@ header {
   border: 2px solid #ccc;
   border-radius: 50%;
 }
-.progress-container li:hover {
-  cursor: pointer;
+
+.active {
   background-color: #ccc;
   color: black;
 }

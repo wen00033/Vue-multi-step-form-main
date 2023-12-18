@@ -11,7 +11,6 @@
     <label for="phone">Phone Number</label>
     <input type="tel" id="phone" placeholder="234 567 890" />
   </form>
-  <submit />
 </template>
 
 <style scoped>

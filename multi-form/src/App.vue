@@ -1,24 +1,31 @@
 <template>
   <div class="wrapper">
-    <step />
+    <step :update="currentStep" />
     <main class="content">
       <router-view />
     </main>
   </div>
   <footer>
-    <submit />
+    <submit @prevStep="check" @nextStep="check2" />
   </footer>
 </template>
 
-<script>
+<script setup>
 import step from "./components/step.vue";
-import submit from "./components/Submit.vue";
-export default {
-  components: {
-    step,
-    submit,
-  },
-};
+import submit from "./components/submit.vue";
+import { defineProps, ref } from "vue";
+
+const currentStep = ref(1);
+
+function check(payload) {
+  currentStep.value = payload - 1;
+  console.log(currentStep.value);
+}
+
+function check2(payload) {
+  currentStep.value = payload - 1;
+  console.log(currentStep.value);
+}
 </script>
 <style lang="scss">
 .content {
