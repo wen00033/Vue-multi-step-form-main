@@ -5,21 +5,46 @@
   </p>
   <form>
     <label for="name">Name</label>
-    <input type="text" id="name" placeholder="e.g. Stephen King" />
+    <input
+      type="text"
+      v-model="person.name"
+      id="name"
+      placeholder="e.g. Stephen King"
+    />
     <label for="email">Email Address</label>
-    <input type="email" id="email" placeholder="e.g. stephenking@lorem.com" />
+    <input
+      type="email"
+      v-model="person.email"
+      id="email"
+      placeholder="e.g. stephenking@lorem.com"
+    />
     <label for="phone">Phone Number</label>
-    <input type="tel" id="phone" placeholder="234 567 890" />
+    <input
+      v-model="person.phone"
+      type="tel"
+      id="phone"
+      placeholder="234 567 890"
+    />
   </form>
 </template>
+<script setup>
+import { ref, watch } from "vue";
+const person = ref({
+  name: "",
+  email: "",
+  phone: "",
+});
+
+watch(
+  person,
+  (newVal) => {
+    localStorage.setItem("person", JSON.stringify(newVal));
+  },
+  { deep: true, immediate: true }
+);
+</script>
 
 <style scoped>
-.page-info {
-  font-size: 0.8rem;
-  color: gray;
-  margin-block: 1rem;
-}
-
 form {
   display: flex;
   flex-direction: column;

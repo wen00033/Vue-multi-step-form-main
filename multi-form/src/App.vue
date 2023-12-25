@@ -13,18 +13,25 @@
 <script setup>
 import step from "./components/step.vue";
 import submit from "./components/submit.vue";
-import { defineProps, ref } from "vue";
+import { ref } from "vue";
+import db from "./utils/db";
+import { collection, addDoc } from "firebase/firestore";
+// Add a new document with a generated id.
+// const docRef = await addDoc(collection(db, "plan"));
+// console.log("Document written with ID: ", docRef.id);
 
 const currentStep = ref(1);
 
 function check(payload) {
-  currentStep.value = payload - 1;
-  console.log(currentStep.value);
+  currentStep.value = payload;
 }
 
 function check2(payload) {
-  currentStep.value = payload - 1;
-  console.log(currentStep.value);
+  currentStep.value = payload;
+}
+
+function check3(payload) {
+  console.log(payload);
 }
 </script>
 <style lang="scss">

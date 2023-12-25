@@ -1,3 +1,33 @@
 <template>
-  <div>this is addon page</div>
+  <h2>Pick add-ons</h2>
+  <p class="page-info">Add-ons help enhance your gaming experience.</p>
+  <form action="">
+    <ul>
+      <li v-for="(item, index) in content">
+        <addon :data="item" :key="index" />
+      </li>
+    </ul>
+  </form>
 </template>
+
+<script setup>
+import addon from "../components/addon.vue";
+import { ref } from "vue";
+const content = ref([
+  {
+    addons: "online service",
+    text: "access multiplayer games",
+    price: ["$1/mo", "$10/yr"],
+  },
+  {
+    addons: "Large storage",
+    text: "Extra 1TB of cloud save ",
+    price: ["$2/mo", "$20/yr"],
+  },
+  {
+    addons: "Customizable profile",
+    text: "Custom theme on your profile",
+    price: ["$2/mo", "$20/yr"],
+  },
+]);
+</script>

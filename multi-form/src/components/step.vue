@@ -14,7 +14,7 @@
   </header>
 </template>
 <script setup>
-import { defineProps, onMounted } from "vue";
+import { defineProps, onMounted, watch } from "vue";
 
 const props = defineProps({
   update: {
@@ -24,12 +24,26 @@ const props = defineProps({
 });
 
 onMounted(() => {
-  const step = document.querySelectorAll(".step");
-  console.log(step);
-  step[props.update].classList.add("active");
+  nextStep();
 });
 
-console.log(props.update);
+const nextStep = function () {
+  const step = document.querySelectorAll(".step");
+  step.forEach((item, index) => {
+    if (index == props.update - 1) {
+      item.classList.add("active");
+    } else {
+      item.classList.remove("active");
+    }
+  });
+};
+
+watch(
+  () => props.update,
+  () => {
+    nextStep();
+  }
+);
 </script>
 
 <style lang="scss">

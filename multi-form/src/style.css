@@ -29,3 +29,12 @@ body {
   font-family: Inter;
   background-color: var(--Light-blue);
 }
+
+p {
+  color: grey;
+}
+.page-info {
+  font-size: 0.8rem;
+  color: gray;
+  margin-block: 0.2rem;
+}
