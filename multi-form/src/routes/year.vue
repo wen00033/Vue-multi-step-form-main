@@ -19,22 +19,25 @@
 </template>
 
 <script setup>
+import arcadeIcon from "../../public/images/icon-arcade.svg";
+import advancedIcon from "../../public/images/icon-advanced.svg";
+import proIcon from "../../public/images/icon-pro.svg";
 import plan from "../components/plan.vue";
 import { ref, watch } from "vue";
 
 const content = ref([
   {
-    icon: "../../public/images/icon-arcade.svg",
+    icon: arcadeIcon,
     title: "arcade",
     price: ["$9/mo", "$90/yr"],
   },
   {
-    icon: "../../public/images/icon-advanced.svg",
+    icon: advancedIcon,
     title: "advanced",
     price: ["$12/mo", "$120/yr"],
   },
   {
-    icon: "../../public/images/icon-pro.svg",
+    icon: proIcon,
     title: "pro",
     price: ["$15/mo", "$150/yr"],
   },
