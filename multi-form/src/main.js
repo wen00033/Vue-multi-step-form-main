@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import { createApp } from "vue";
 import "./style.css";
 import App from "./App.vue";
-import Info from "./routes/Info.vue";
+import Info from "./routes/info.vue";
 import year from "./routes/year.vue";
 import addon from "./routes/addon.vue";
 import finish from "./routes/finish.vue";
