@@ -1,26 +1,47 @@
 <template>
-  <div class="option">
-    <input class="checkbox" type="checkbox" />
+    <input class="checkbox" type="checkbox" @click="handleCheck(data.data.addons)" :checked="checked"/>
     <div>
       <h4 class="title">{{ data.data.addons }}</h4>
       <p>{{ data.data.text }}</p>
     </div>
     <h3 class="price">{{ year ? data.data.price[0] : data.data.price[1] }}</h3>
-  </div>
 
-  {{ console.log(data.data) }}
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, computed, ref } from "vue";
 const year = JSON.parse(localStorage.getItem("year"));
-console.log(year);
+const checked = ref(false);
 const data = defineProps({
   data: {
     type: Object,
     required: true,
   },
 });
+const checkedValue = computed(
+  ()=> {
+   return {
+    addons: data.data.addons,
+    price: year ? data.data.price[0] : data.data.price[1],
+    text: data.data.text,
+    checked: false,
+   } 
+  }
+)
+const handleCheck = (setName) => {
+  checked.value = !checked.value;
+  checkedValue.value.checked = checked.value;
+  if( checked.value ) {
+    localStorage.setItem(`${setName}`, JSON.stringify(checkedValue.value));
+  } else {
+    localStorage.removeItem(`${setName}`);
+  }
+};
+
+
+
+
+
 </script>
 <style>
 .checkbox {

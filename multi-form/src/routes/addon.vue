@@ -1,12 +1,10 @@
 <template>
   <h2>Pick add-ons</h2>
   <p class="page-info">Add-ons help enhance your gaming experience.</p>
-  <form action="">
-    <ul>
-      <li v-for="(item, index) in content">
+  <form  @submit.prevent="(e)=>console.log(e.target) ">
+      <div class="option" v-for="(item, index) in content">
         <addon :data="item" :key="index" />
-      </li>
-    </ul>
+      </div>
   </form>
 </template>
 
@@ -30,4 +28,5 @@ const content = ref([
     price: ["$2/mo", "$20/yr"],
   },
 ]);
+
 </script>

@@ -41,16 +41,29 @@ function prevStep() {
   navigator();
   emits("prevStep", event.currentStep);
 }
+
 function navigator() {
   if (event.currentStep == 1) {
     router.push("/");
   }
 
   if (event.currentStep == 2) {
-    router.push("/year");
+    const check = !Object.values(
+      JSON.parse(localStorage.getItem("person"))
+    ).includes("");
+    if (check) {
+      router.push("/year");
+    } else {
+      event.currentStep = 1;
+      alert("Please fill all the field");
+    }
   }
   if (event.currentStep == 3) {
-    router.push("/addon");
+    if (localStorage.getItem("plan")) {
+      router.push("/addon");
+    } else {
+      alert("please select a plan");
+    }
   }
   if (event.currentStep == 4) {
     router.push("/finish");
