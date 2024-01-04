@@ -78,6 +78,7 @@ function navigator() {
 .button-container {
   display: flex;
   justify-content: space-between;
+  padding-inline: 1rem;
 }
 
 button {

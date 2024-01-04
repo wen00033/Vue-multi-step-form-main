@@ -1,13 +1,17 @@
 <template>
   <div class="wrapper">
-    <step :update="currentStep" />
-    <main class="content">
-      <router-view />
-    </main>
+    <div>
+      <step :update="currentStep" />
+    </div>
+    <div class="split-content">
+      <main class="content">
+        <router-view />
+      </main>
+      <footer>
+        <submit @prevStep="check" @nextStep="check2" />
+      </footer>
+    </div>
   </div>
-  <footer>
-    <submit @prevStep="check" @nextStep="check2" />
-  </footer>
 </template>
 
 <script setup>
@@ -29,10 +33,6 @@ function check(payload) {
 function check2(payload) {
   currentStep.value = payload;
 }
-
-function check3(payload) {
-  console.log(payload);
-}
 </script>
 <style lang="scss">
 .content {
@@ -52,5 +52,42 @@ footer {
   bottom: 0;
   background-color: white;
   padding: 0.5rem;
+}
+
+@media screen and (min-width: 1400px) {
+  footer {
+    position: static;
+  }
+
+  .content {
+    position: static;
+    transform: translate(0, 0);
+  }
+
+  #app {
+    padding: 1rem;
+    border-radius: 0.4rem;
+    box-shadow: 1px 2px 3px rgba(128, 128, 128, 0.47);
+    display: flex;
+    flex-direction: row;
+    background: white;
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+  .split-content {
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>

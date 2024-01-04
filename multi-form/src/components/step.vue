@@ -1,15 +1,46 @@
 <template>
   <header>
-    <img
-      class="background"
-      src="../../public/images/bg-sidebar-mobile.svg"
-      alt="mobile"
-    />
+    <picture>
+      <source
+        media="(min-width:1400px)"
+        srcset="../../public/images/bg-sidebar-desktop.svg"
+      />
+      <img
+        class="background"
+        src="../../public/images/bg-sidebar-mobile.svg"
+        alt="mobile"
+      />
+    </picture>
+
     <ul class="progress-container">
-      <li class="step"><h4>1</h4></li>
-      <li class="step"><h4>2</h4></li>
-      <li class="step"><h4>3</h4></li>
-      <li class="step"><h4>4</h4></li>
+      <li class="step">
+        <h4>1</h4>
+        <div class="step-content">
+          <span>step 1</span>
+          <h5>Your Info</h5>
+        </div>
+      </li>
+      <li class="step">
+        <h4>2</h4>
+        <div class="step-content">
+          <span>step 2</span>
+          <h5>Select plan</h5>
+        </div>
+      </li>
+      <li class="step">
+        <h4>3</h4>
+        <div class="step-content">
+          <span>step 3</span>
+          <h5>add-ons</h5>
+        </div>
+      </li>
+      <li class="step">
+        <h4>4</h4>
+        <div class="step-content">
+          <span>step 4</span>
+          <h5>summary</h5>
+        </div>
+      </li>
     </ul>
   </header>
 </template>
@@ -63,6 +94,7 @@ header {
 }
 
 .background {
+  height: 100%;
   width: 100%;
   object-fit: cover;
   object-position: center;
@@ -93,5 +125,30 @@ header {
 
 .progress-container h4 {
   @extend .center;
+}
+
+.step-content {
+  display: none;
+}
+
+@media screen and (min-width: 1400px) {
+  .progress-container {
+    gap: 1rem;
+    flex-direction: column;
+    justify-self: flex-start;
+    left: 20%;
+    top: 35%;
+  }
+  .step-content {
+    display: block;
+    position: absolute;
+    left: 140%;
+    top: -10%;
+  }
+
+  .step-content > * {
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
 }
 </style>
